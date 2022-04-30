@@ -15,26 +15,27 @@
             
  • README.md заполнен и содержит актуальную информацию
 
- • В файле README.md стоят бейджики GitHub Actions
+ ✓ В файле README.md стоят бейджики GitHub Actions
 
- • Доступна инструкция по установке зависимостей
+ ✓ Доступна инструкция по установке зависимостей
 
- • Описано как запустить тесты
+ ✓ Описано как запустить тесты
 
  • Есть информация о цели тестирования и краткое описание проекта
 
- • Для тестирования используется фреймворк pytest 
+ ✓ Для тестирования используется фреймворк pytest 
 
  • Результатом тестирования является сгенерированный отчет (например, Allure)
 
 
 
+[![Python application](https://github.com/ds-vasilev/AKB-co-work/actions/workflows/python-app_22_04.yml/badge.svg)](https://github.com/ds-vasilev/AKB-co-work/actions/workflows/python-app_22_04.yml)
 
 
-
-
-Our test app 
-```https://cypress-tourism-app.herokuapp.com ```
+Test app: 
+```
+https://cypress-tourism-app.herokuapp.com
+```
 
 How to start:
 ```python3 -m venv env
@@ -43,7 +44,7 @@ source env/bin/activate
 
 Requirements in:
 ```
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 Tests start:
