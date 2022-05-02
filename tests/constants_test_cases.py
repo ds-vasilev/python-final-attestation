@@ -1,4 +1,25 @@
 class TestCases:
+    VALID_SPECIAL_CHARACTERS = [
+        "@",
+        ".",
+        "+",
+        "-",
+        "_",
+    ]
+
+    INVALID_SPECIAL_CHARACTERS = [
+        "!",
+        "#",
+        "$",
+        "%",
+        "^",
+        "&",
+        "*",
+        "(",
+        "/",
+        "`",
+    ]
+
     INVALID_EMAILS_LIST_FOR_REG = [
         ["nekorrektnii#email"],
         ["nekorrektnii@email"],
