@@ -13,7 +13,7 @@ class RegistrationPage(BasePage):
     EMAIL = (By.NAME, "email")
     REG_BUTTON = (By.XPATH, "//input[@value='register']")
     TEXT_ON_HEAD_IN_LOG_IN_PAGE = (By.CLASS_NAME, "head")
-    ALREADY_EXISTS = (By.XPATH, "//ul[@class='errorlist']/li")
+    ERROR_TEXT = (By.XPATH, "//ul[@class='errorlist']/li")
 
     # def reg_interface_image(self):
     #     element = self.app.driver.find_element(*self.REG_INTERFACE_IMAGE)
@@ -50,21 +50,16 @@ class RegistrationPage(BasePage):
         element = self.text(locator=self.TEXT_ON_HEAD_IN_LOG_IN_PAGE)
         return element
 
-    def text_username_already_exists(self) -> str:
+    def text_error_reg_page(self) -> str:
         """
         Element "Log in" on Head on "sign in" page.
         """
-        element = self.text(locator=self.ALREADY_EXISTS)
+        element = self.text(locator=self.ERROR_TEXT)
         return element
 
-    # def reg_status_big_red_tab(self) -> str:
-    #     """
-    #     алертная всплывашка снизу на невалидные данные.
-    #     """
-    #     element = self.text(locator=self.MESSAGE_REG_STATUS_ERROR_BIG_RED)
-    #     return element
-    #
-    # def all_toast_statuses(self) -> list:
-    #     """информационная всплывашка справа-вверху"""
-    #     element = self.text_on_all_same_fields(locator=self.MESSAGE_REG_STATUS_TOP_RIGHT)
-    #     return element
+    def text_many_errors_reg_page(self) -> list:
+        """
+        Element "Log in" on Head on "sign in" page.
+        """
+        element = self.text_on_all_same_fields(locator=self.ERROR_TEXT)
+        return element
