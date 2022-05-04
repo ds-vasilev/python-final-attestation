@@ -7,3 +7,4 @@ class RegMessages:
     SHORT_PASS = "This password is too short. It must contain at least 8 characters."
     TOO_COMMON_PASS = "This password is too common."
     ENTIRELY_NUMERIC_PASS = "This password is entirely numeric."
+    INVALID_EMAIL = "Enter a valid email address."

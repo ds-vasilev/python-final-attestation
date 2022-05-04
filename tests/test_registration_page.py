@@ -132,3 +132,16 @@ class TestRegistrationPage:
         all_errors_msgs = app.registration_page.text_many_errors_reg_page()
         assert RegMessages.TOO_COMMON_PASS in all_errors_msgs
         logging.info(f"errors: {all_errors_msgs}, pass: {data.password_1}")
+
+    @pytest.mark.parametrize("invalid_email", TestCases.INVALID_EMAILS_LIST_FOR_REG)
+    def test_invalid_email(self, app, invalid_email):
+        """
+        Test for invalid email.
+        """
+        app.registration_page.open_registration_page()
+        data = RegisterUserModel.random()
+        data.email = invalid_email
+        app.registration_page.entry_data_registration(data=data)
+        all_errors_msgs = app.registration_page.text_many_errors_reg_page()
+        assert RegMessages.INVALID_EMAIL in all_errors_msgs
+        logging.info(f"errors: {all_errors_msgs}, pass: {data.email}")
