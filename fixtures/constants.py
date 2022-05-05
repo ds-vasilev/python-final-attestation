@@ -8,3 +8,4 @@ class RegMessages:
     TOO_COMMON_PASS = "This password is too common."
     ENTIRELY_NUMERIC_PASS = "This password is entirely numeric."
     INVALID_EMAIL = "Enter a valid email address."
+    PASS_SIMILAR_TO_THE_USERNAME = "The password is too similar to the username."

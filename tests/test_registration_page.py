@@ -133,6 +133,19 @@ class TestRegistrationPage:
         assert RegMessages.TOO_COMMON_PASS in all_errors_msgs
         logging.info(f"errors: {all_errors_msgs}, pass: {data.password_1}")
 
+    def test_pass_and_username_similar(self, app):
+        """
+        Test for similar pass and username.
+        """
+        app.registration_page.open_registration_page()
+        data = RegisterUserModel.random()
+        data.password_1 = data.username
+        data.password_2 = data.password_1
+        app.registration_page.entry_data_registration(data=data)
+        all_errors_msgs = app.registration_page.text_many_errors_reg_page()
+        assert RegMessages.PASS_SIMILAR_TO_THE_USERNAME in all_errors_msgs
+        logging.info(f"errors: {all_errors_msgs}, pass: {data.email}")
+
     @pytest.mark.parametrize("invalid_email", TestCases.INVALID_EMAILS_LIST_FOR_REG)
     def test_invalid_email(self, app, invalid_email):
         """
