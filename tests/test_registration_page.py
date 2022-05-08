@@ -177,9 +177,9 @@ class TestRegistrationPage:
         Test for valid avatar upload.
         """
         app.registration_page.open_registration_page()
-        img = "C:/GitHub/python-final-attestation/tests/vaild_ava.jpg"  # todo .. и .
+        # img = "C:/GitHub/python-final-attestation/images/vaild_ava.jpg"  # todo .. и .
         # img = Path("python-final-attestation", "tests", "vaild_ava.jpg")
-        # img = ".tests/vaild_ava.jpg"
+        # img = "./vaild_ava.jpg"
 
         app.registration_page.avatar_upload(file_path=img)
         data = RegisterUserModel.random()
