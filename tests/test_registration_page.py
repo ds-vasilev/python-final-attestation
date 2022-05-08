@@ -177,15 +177,14 @@ class TestRegistrationPage:
         Test for valid avatar upload.
         """
         app.registration_page.open_registration_page()
-        img = "C:/GitHub/python-final-attestation/.github/images/vaild_ava.jpg"  # todo .. и .
+        # img = "C:/GitHub/python-final-attestation/.github/images/vaild_ava.jpg"
+        img = f"https://raw.githubusercontent.com/ds-vasilev/python-final-attestation/master/.github/images/vaild_ava.jpg"
         # img = Path("python-final-attestation", "tests", "vaild_ava.jpg")
         # img = "./vaild_ava.jpg"
-
         app.registration_page.avatar_upload(file_path=img)
         data = RegisterUserModel.random()
         app.registration_page.entry_data_registration(data=data)
         assert app.registration_page.text_on_head_in_log_in_page() == RegMessages.LOG_IN
         app.registration_page.login(username=data.username, password=data.password_1)
         app.registration_page.enter_on_profile_page()
-        some = app.registration_page.profile_image_check()
-        assert "Currently" in some
+        assert "Currently" in app.registration_page.profile_image_check()
