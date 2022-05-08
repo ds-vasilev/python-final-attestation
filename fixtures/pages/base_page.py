@@ -76,6 +76,13 @@ class BasePage:
         element = self._find_element(locator, wait_time)
         element.send_keys(Keys.F5)
 
+    def upload_img(self, locator, file_path, wait_time=10):
+        """
+        Upload.
+        """
+        element = self._find_element(locator, wait_time)
+        element.send_keys(file_path)
+
     def text_on_all_same_fields(self, locator, wait_time=10) -> list:
         """
         Get elementS text.
@@ -89,7 +96,7 @@ class BasePage:
 
     def wait_element_text(self, locator, text, wait_time=5):
         """
-        Реализация слипа через явные ожидания.
+        Sleep + expected conditions.
         """
         timestamp = time.time() + wait_time
         while time.time() < timestamp:

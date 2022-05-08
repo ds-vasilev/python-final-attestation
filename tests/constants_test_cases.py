@@ -1,7 +1,7 @@
 from random import randint
 
 
-class TestCases:
+class DataCasesPasswords:
     VALID_SPECIAL_CHARACTERS = [
         "@",
         ".",
@@ -36,6 +36,12 @@ class TestCases:
 
     TOO_COMMON_PASSWORD = [
         "Iloveyou",
+    ]
+
+    AGE_CONTROL = [
+        "0",
+        "1",
+        "17",
     ]
 
     INVALID_EMAILS_LIST_FOR_REG = [
