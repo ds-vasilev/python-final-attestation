@@ -4,10 +4,7 @@ from fixtures.constants import RegMessages
 from models.register import RegisterUserModel
 from tests.constants_test_cases import DataCasesPasswords
 from pathlib import Path
-
 import time
-# import json
-# from selenium.webdriver.common.by import By
 
 
 class TestRegistrationPage:
@@ -67,7 +64,11 @@ class TestRegistrationPage:
         """
         Test for username empty field.
         """
-        pass
+        app.registration_page.open_registration_page()
+        data = RegisterUserModel.random()
+        data.username = 0
+        app.registration_page.entry_data_registration(data=data)
+        assert app.registration_page.text_on_head_in_registration_page() == RegMessages.REGISTER
 
     def test_two_password_fields_did_not_match(self, app):
         """
@@ -83,13 +84,21 @@ class TestRegistrationPage:
         """
         Test for "Password" empty field.
         """
-        pass
+        app.registration_page.open_registration_page()
+        data = RegisterUserModel.random()
+        data.password_1 = 0
+        app.registration_page.entry_data_registration(data=data)
+        assert app.registration_page.text_on_head_in_registration_page() == RegMessages.REGISTER
 
     def test_invalid_password2_empty_field(self, app):
         """
         Test for Password confirmation" empty field.
         """
-        pass
+        app.registration_page.open_registration_page()
+        data = RegisterUserModel.random()
+        data.password_2 = 0
+        app.registration_page.entry_data_registration(data=data)
+        assert app.registration_page.text_on_head_in_registration_page() == RegMessages.REGISTER
 
     @pytest.mark.parametrize("short_password", DataCasesPasswords.SHORT_PASSWORD)
     def test_short_password(self, app, short_password):
@@ -172,19 +181,20 @@ class TestRegistrationPage:
         assert RegMessages.SO_YOUNG in all_errors_msgs
         logging.info(f"errors: {all_errors_msgs}")
 
-    def test_valid_avatar_upload(self, app):
-        """
-        Test for valid avatar upload.
-        """
-        app.registration_page.open_registration_page()
-        # img = "C:/GitHub/python-final-attestation/.github/images/vaild_ava.jpg"
-        img = f"https://raw.githubusercontent.com/ds-vasilev/python-final-attestation/master/.github/images/vaild_ava.jpg"
-        # img = Path("python-final-attestation", "tests", "vaild_ava.jpg")
-        # img = "./vaild_ava.jpg"
-        app.registration_page.avatar_upload(file_path=img)
-        data = RegisterUserModel.random()
-        app.registration_page.entry_data_registration(data=data)
-        assert app.registration_page.text_on_head_in_log_in_page() == RegMessages.LOG_IN
-        app.registration_page.login(username=data.username, password=data.password_1)
-        app.registration_page.enter_on_profile_page()
-        assert "Currently" in app.registration_page.profile_image_check()
+    # def test_valid_avatar_upload(self, app):
+    #     """
+    #     Test for valid avatar upload.
+    #     """
+    #     app.registration_page.open_registration_page()
+    #     img = "C:/GitHub/python-final-attestation/.github/images/vaild_ava.jpg"
+    #     # img = f"https://raw.githubusercontent.com/ds-vasilev/python-final-attestation/master/.github/images/vaild_ava.jpg"
+    #     # img = Path("python-final-attestation", "tests", "vaild_ava.jpg")
+    #     # img = "./vaild_ava.jpg"
+    #
+    #     app.registration_page.avatar_upload(file_path=img)
+    #     data = RegisterUserModel.random()
+    #     app.registration_page.entry_data_registration(data=data)
+    #     assert app.registration_page.text_on_head_in_log_in_page() == RegMessages.LOG_IN
+    #     app.registration_page.login(username=data.username, password=data.password_1)
+    #     app.registration_page.enter_on_profile_page()
+    #     assert "Currently" in app.registration_page.profile_image_check()

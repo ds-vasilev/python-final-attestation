@@ -13,6 +13,7 @@ class RegistrationPage(BasePage):
     EMAIL_REG = (By.NAME, "email")
     REG_BUTTON = (By.XPATH, "//input[@value='register']")
     TEXT_ON_HEAD_IN_LOG_IN_PAGE = (By.CLASS_NAME, "head")
+    TEXT_ON_HEAD_IN_REGISTRATION_PAGE = (By.CLASS_NAME, "head")
     ERROR_TEXT = (By.XPATH, "//ul[@class='errorlist']/li")
     AGE = (By.NAME, "age")
     IMAGE_UPLOAD = (By.NAME, "avatar")
@@ -52,6 +53,13 @@ class RegistrationPage(BasePage):
         Element "Log in" on Head on "sign in" page.
         """
         element = self.text(locator=self.TEXT_ON_HEAD_IN_LOG_IN_PAGE)
+        return element
+
+    def text_on_head_in_registration_page(self) -> str:
+        """
+        Element "Registration" on Head on "registration" page.
+        """
+        element = self.text(locator=self.TEXT_ON_HEAD_IN_REGISTRATION_PAGE)
         return element
 
     def text_error_reg_page(self) -> str:
