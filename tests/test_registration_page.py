@@ -142,6 +142,17 @@ class TestRegistrationPage:
         assert RegMessages.TOO_COMMON_PASS in all_errors_msgs
         logging.info(f"errors: {all_errors_msgs}, pass: {data.password_1}")
 
+    @pytest.mark.parametrize("form_control_password", DataCasesPasswords.FORM_CONTROL_PASSWORD)
+    def test_simple_password(self, app, form_control_password):
+        """
+        Test for entirely passwords form-control.
+        """
+        app.registration_page.open_registration_page()
+        data = RegisterUserModel.random()
+        data.email = form_control_password
+        app.registration_page.entry_data_registration(data=data)
+        assert app.registration_page.text_on_head_in_registration_page() == RegMessages.REGISTER
+
     def test_pass_and_username_similar(self, app):
         """
         Test for similar pass and username.
@@ -180,6 +191,17 @@ class TestRegistrationPage:
         all_errors_msgs = app.registration_page.text_many_errors_reg_page()
         assert RegMessages.SO_YOUNG in all_errors_msgs
         logging.info(f"errors: {all_errors_msgs}")
+
+    @pytest.mark.parametrize("age", DataCasesPasswords.AGE_CONTROL_FORM_CONTROL)
+    def test_invalid_age(self, app, age):
+        """
+        Test for invalid age with form-control.
+        """
+        app.registration_page.open_registration_page()
+        app.registration_page.clear_and_fill(age)
+        data = RegisterUserModel.random()
+        app.registration_page.entry_data_registration(data=data)
+        assert app.registration_page.text_on_head_in_registration_page() == RegMessages.REGISTER
 
     # def test_valid_avatar_upload(self, app):
     #     """

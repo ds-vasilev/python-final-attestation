@@ -38,10 +38,21 @@ class DataCasesPasswords:
         "Iloveyou",
     ]
 
+    FORM_CONTROL_PASSWORD =[
+        ["nekorrektnii.email"],
+        ["@nekorrektniiemail.com"],
+    ]
+
     AGE_CONTROL = [
         "0",
         "1",
         "17",
+    ]
+
+    AGE_CONTROL_FORM_CONTROL = [
+        "-1",
+        "18.5",
+        "ывыы",
     ]
 
     INVALID_EMAILS_LIST_FOR_REG = [
