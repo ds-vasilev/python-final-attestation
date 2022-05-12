@@ -3,8 +3,6 @@ import logging
 from fixtures.constants import RegMessages
 from models.register import RegisterUserModel
 from tests.constants_test_cases import DataCasesPasswords
-from pathlib import Path
-import time
 
 
 class TestRegistrationPage:
@@ -92,7 +90,7 @@ class TestRegistrationPage:
 
     def test_invalid_password2_empty_field(self, app):
         """
-        Test for Password confirmation" empty field.
+        Test for Password confirmation empty field.
         """
         app.registration_page.open_registration_page()
         data = RegisterUserModel.random()
@@ -209,7 +207,8 @@ class TestRegistrationPage:
     #     """
     #     app.registration_page.open_registration_page()
     #     img = "C:/GitHub/python-final-attestation/.github/images/vaild_ava.jpg"
-    #     # img = f"https://raw.githubusercontent.com/ds-vasilev/python-final-attestation/master/.github/images/vaild_ava.jpg"
+    #     img = f"https://raw.githubusercontent.com/ds-vasilev/python-final-attestation/master/" \
+    #           f".github/images/vaild_ava.jpg"
     #     # img = Path("python-final-attestation", "tests", "vaild_ava.jpg")
     #     # img = "./vaild_ava.jpg"
     #

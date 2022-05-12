@@ -30,15 +30,15 @@ class DataCasesPasswords:
 
     NUMERIC_PASSWORD = [
         "0",
-        randint(1,999999),
-        randint(12345678,123456789),
+        randint(1, 999999),
+        randint(12345678, 123456789),
     ]
 
     TOO_COMMON_PASSWORD = [
         "Iloveyou",
     ]
 
-    FORM_CONTROL_PASSWORD =[
+    FORM_CONTROL_PASSWORD = [
         ["nekorrektnii.email"],
         ["@nekorrektniiemail.com"],
     ]
@@ -61,9 +61,12 @@ class DataCasesPasswords:
         ["nekorre.ktnii@mail"],
     ]
 
+    INVALID_EMPTY_DATA_FOR_LOG_PAGE = [
+        ["", "testtesttest"],
+        ["test", ""],
+    ]
+
     INVALID_DATA_FOR_LOG_PAGE = [
-        ["", ""],
-        ["invalid", "invalid"],
-        ["111@test.ru", ""],
-        ["", "11111111"],
+        ["@", "1111111111111"],
+        ["test", "Iloveyou"],
     ]

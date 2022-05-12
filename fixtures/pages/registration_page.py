@@ -20,7 +20,7 @@ class RegistrationPage(BasePage):
     USERNAME_LOGIN = (By.NAME, "username")
     PASSWORD_LOGIN = (By.NAME, "password")
     LOGIN_BUTTON_ON_LOGIN_PAGE = (By.XPATH, "//input[@class='form-control'][@type='submit']")
-    PROFILE_BUTTON = (By.CLASS_NAME, "dropdown-toggle")
+    PROFILE_BUTTON_ON_HEADER = (By.CLASS_NAME, "dropdown-toggle")
     PROFILE_DROP_DOWN = (By.XPATH, "//a[@class='dropdown-item'][1]")
     PROFILE_IMAGE = (By.XPATH, "//p[5]")
 
@@ -50,7 +50,7 @@ class RegistrationPage(BasePage):
 
     def text_on_head_in_log_in_page(self) -> str:
         """
-        Element "Log in" on Head on "sign in" page.
+        Element "Log in" on Head on "Log in" page.
         """
         element = self.text(locator=self.TEXT_ON_HEAD_IN_LOG_IN_PAGE)
         return element
@@ -103,7 +103,7 @@ class RegistrationPage(BasePage):
         """
         Open profile menu.
         """
-        self.click_element(locator=self.PROFILE_BUTTON)
+        self.click_element(locator=self.PROFILE_BUTTON_ON_HEADER)
         self.click_element(locator=self.PROFILE_DROP_DOWN)
 
     def profile_image_check(self) -> str:

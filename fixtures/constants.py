@@ -11,3 +11,8 @@ class RegMessages:
     INVALID_EMAIL = "Enter a valid email address."
     PASS_SIMILAR_TO_THE_USERNAME = "The password is too similar to the username."
     SO_YOUNG = "You are young!"
+
+class LogMessages:
+    LOG_IN = "Log in"
+    ERROR_USERNAME_OR_PASS = f"Please enter a correct username and password. " \
+                             f"Note that both fields may be case-sensitive."
