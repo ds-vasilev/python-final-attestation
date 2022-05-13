@@ -43,7 +43,7 @@ class LoginPage(BasePage):
         element = self.text(locator=self.TEXT_ON_HEAD_IN_LOG_IN_PAGE)
         return element
 
-    def text_many_errors_reg_page(self) -> list:
+    def text_many_errors_login_page(self) -> list:
         """
         All errors on login page.
         """

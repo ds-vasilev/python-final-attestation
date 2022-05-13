@@ -108,7 +108,7 @@ class TestRegistrationPage:
         data.password_1 = short_password
         data.password_2 = data.password_1
         app.registration_page.entry_data_registration(data=data)
-        all_errors_msgs = app.registration_page.text_many_errors_reg_page()
+        all_errors_msgs = app.registration_page.text_many_errors_login_page()
         assert RegMessages.SHORT_PASS in all_errors_msgs
         logging.info(f"errors: {all_errors_msgs}")
 
@@ -122,7 +122,7 @@ class TestRegistrationPage:
         data.password_1 = numeric_password
         data.password_2 = data.password_1
         app.registration_page.entry_data_registration(data=data)
-        all_errors_msgs = app.registration_page.text_many_errors_reg_page()
+        all_errors_msgs = app.registration_page.text_many_errors_login_page()
         assert RegMessages.ENTIRELY_NUMERIC_PASS in all_errors_msgs
         logging.info(f"errors: {all_errors_msgs}, pass: {data.password_1}")
 
@@ -136,7 +136,7 @@ class TestRegistrationPage:
         data.password_1 = too_common_password
         data.password_2 = data.password_1
         app.registration_page.entry_data_registration(data=data)
-        all_errors_msgs = app.registration_page.text_many_errors_reg_page()
+        all_errors_msgs = app.registration_page.text_many_errors_login_page()
         assert RegMessages.TOO_COMMON_PASS in all_errors_msgs
         logging.info(f"errors: {all_errors_msgs}, pass: {data.password_1}")
 
@@ -160,7 +160,7 @@ class TestRegistrationPage:
         data.password_1 = data.username
         data.password_2 = data.password_1
         app.registration_page.entry_data_registration(data=data)
-        all_errors_msgs = app.registration_page.text_many_errors_reg_page()
+        all_errors_msgs = app.registration_page.text_many_errors_login_page()
         assert RegMessages.PASS_SIMILAR_TO_THE_USERNAME in all_errors_msgs
         logging.info(f"errors: {all_errors_msgs}, pass: {data.email}")
 
@@ -173,7 +173,7 @@ class TestRegistrationPage:
         data = RegisterUserModel.random()
         data.email = invalid_email
         app.registration_page.entry_data_registration(data=data)
-        all_errors_msgs = app.registration_page.text_many_errors_reg_page()
+        all_errors_msgs = app.registration_page.text_many_errors_login_page()
         assert RegMessages.INVALID_EMAIL in all_errors_msgs
         logging.info(f"errors: {all_errors_msgs}, pass: {data.email}")
 
@@ -186,7 +186,7 @@ class TestRegistrationPage:
         app.registration_page.clear_and_fill(age)
         data = RegisterUserModel.random()
         app.registration_page.entry_data_registration(data=data)
-        all_errors_msgs = app.registration_page.text_many_errors_reg_page()
+        all_errors_msgs = app.registration_page.text_many_errors_login_page()
         assert RegMessages.SO_YOUNG in all_errors_msgs
         logging.info(f"errors: {all_errors_msgs}")
 
@@ -201,21 +201,21 @@ class TestRegistrationPage:
         app.registration_page.entry_data_registration(data=data)
         assert app.registration_page.text_on_head_in_registration_page() == RegMessages.REGISTER
 
-    # def test_valid_avatar_upload(self, app):
-    #     """
-    #     Test for valid avatar upload.
-    #     """
-    #     app.registration_page.open_registration_page()
-    #     img = "C:/GitHub/python-final-attestation/.github/images/vaild_ava.jpg"
-    #     img = f"https://raw.githubusercontent.com/ds-vasilev/python-final-attestation/master/" \
-    #           f".github/images/vaild_ava.jpg"
-    #     # img = Path("python-final-attestation", "tests", "vaild_ava.jpg")
-    #     # img = "./vaild_ava.jpg"
-    #
-    #     app.registration_page.avatar_upload(file_path=img)
-    #     data = RegisterUserModel.random()
-    #     app.registration_page.entry_data_registration(data=data)
-    #     assert app.registration_page.text_on_head_in_log_in_page() == RegMessages.LOG_IN
-    #     app.registration_page.login(username=data.username, password=data.password_1)
-    #     app.registration_page.enter_on_profile_page()
-    #     assert "Currently" in app.registration_page.profile_image_check()
+    @pytest.mark.xfail
+    def test_valid_avatar_upload(self, app):
+        """
+        Test for valid avatar upload.
+        """
+        app.registration_page.open_registration_page()
+        img = "C:/GitHub/python-final-attestation/.github/images/vaild_ava.jpg"
+        # img = f"https://raw.githubusercontent.com/ds-vasilev/python-final-attestation/master/" \
+        #       f".github/images/vaild_ava.jpg"
+        # img = Path("python-final-attestation", "tests", "vaild_ava.jpg")
+        # img = "./vaild_ava.jpg"
+        app.registration_page.avatar_upload(file_path=img)
+        data = RegisterUserModel.random()
+        app.registration_page.entry_data_registration(data=data)
+        assert app.registration_page.text_on_head_in_log_in_page() == RegMessages.LOG_IN
+        app.registration_page.login(username=data.username, password=data.password_1)
+        app.registration_page.enter_on_profile_page()
+        assert "Currently" in app.registration_page.profile_image_check()
