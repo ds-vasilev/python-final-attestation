@@ -2,9 +2,9 @@ from fixtures.constants import OrderMessages
 
 
 class TestLoginPage:
-    def test_order_login(self, app):
+    def test_order_hotel(self, app):
         """
-        Test for valid logging.
+        Test for valid booking.
         """
         app.order_page.open_login_page()
         username = "test"
