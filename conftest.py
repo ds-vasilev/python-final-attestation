@@ -23,6 +23,7 @@ def pytest_addoption(parser):
 
 @pytest.fixture
 def app(request):
+
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-dev-shm-usage")
