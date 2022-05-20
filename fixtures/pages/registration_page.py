@@ -112,3 +112,19 @@ class RegistrationPage(BasePage):
         """
         element = self.text(locator=self.PROFILE_IMAGE)
         return element
+
+    def entry_data_registration_form_control(self, data):
+        """
+        Data entry in fields.
+        """
+        self.clear(locator=self.USERNAME_REG)
+        self.fill(locator=self.USERNAME_REG, value=data["username"])
+        self.clear(locator=self.FIRST_NAME_REG)
+        self.fill(locator=self.FIRST_NAME_REG, value=data["firstname"])
+        self.clear(locator=self.PASS_1_REG)
+        self.fill(locator=self.PASS_1_REG, value=data["password_1"])
+        self.clear(locator=self.PASS_2_REG)
+        self.fill(locator=self.PASS_2_REG, value=data["password_2"])
+        self.clear(locator=self.EMAIL_REG)
+        self.fill(locator=self.EMAIL_REG, value=data["email"])
+        self.click_element(locator=self.REG_BUTTON)

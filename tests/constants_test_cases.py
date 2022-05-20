@@ -13,14 +13,6 @@ class DataCasesPasswords:
     INVALID_SPECIAL_CHARACTERS = [
         "!",
         "#",
-        "$",
-        "%",
-        "^",
-        "&",
-        "*",
-        "(",
-        "/",
-        "`",
     ]
 
     SHORT_PASSWORD = [
@@ -36,11 +28,6 @@ class DataCasesPasswords:
 
     TOO_COMMON_PASSWORD = [
         "Iloveyou",
-    ]
-
-    FORM_CONTROL_PASSWORD = [
-        ["nekorrektnii.email"],
-        ["@nekorrektniiemail.com"],
     ]
 
     AGE_CONTROL = [
@@ -69,4 +56,12 @@ class DataCasesPasswords:
     INVALID_DATA_FOR_LOG_PAGE = [
         ["@", "1111111111111"],
         ["test", "Iloveyou"],
+    ]
+
+    FORM_CONTROL_CHECK = [
+        ["username", ""],
+        ["password_1", ""],
+        ["password_2", ""],
+        ["email", "nekorrektnii.email"],
+        ["email", "@nekorrektniiemail.com"],
     ]

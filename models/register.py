@@ -24,3 +24,19 @@ class RegisterUserModel:
         logging.info(f"user: {username_}, email: {email_}, pass: {password}, firstname: {firstname}")
         return RegisterUserModel(email=email_, password_1=password,
                                  password_2=password, firstname=firstname, username=username_)
+
+    @staticmethod
+    def random_list() -> dict:
+        """
+        Dict realisation for parametrization.
+        """
+        first_name = fake.first_name()
+        password = fake.password()
+        new_user = dict(
+            firstname = first_name,
+            username = first_name + fake.last_name(),
+            email = fake.email(),
+            password_1 = password,
+            password_2 = password
+        )
+        return new_user
