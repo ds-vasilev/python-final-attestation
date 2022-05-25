@@ -5,6 +5,8 @@ class TestLoginPage:
     def test_order_hotel(self, app):
         """
         Test for valid booking.
+
+        :notes: Test 24.
         """
         app.order_page.open_login_page()
         username = "test"

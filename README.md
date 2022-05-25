@@ -24,7 +24,7 @@ pip install -r requirements.txt
 
 Tests start:
 ```
-pytest
+Pytest
 ```
 
 Code-check implemented through:
@@ -34,13 +34,19 @@ https://pre-commit.com/
 
 Test cases in:
 ```
-test-cases.xlsx
+./Test-cases.xlsx
 ```
 
 
 Logging implemented through:
 ```
-logging
+Logging
+```
+
+Repports in:
+```
+Allure
+$ allure serve ./python-final-attestation/report
 ```
 
 

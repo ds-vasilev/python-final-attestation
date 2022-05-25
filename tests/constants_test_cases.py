@@ -1,6 +1,3 @@
-from random import randint
-
-
 class DataCasesPasswords:
     VALID_SPECIAL_CHARACTERS = [
         "@",
@@ -15,21 +12,6 @@ class DataCasesPasswords:
         "#",
     ]
 
-    SHORT_PASSWORD = [
-        "1",
-        "1@a1Q$s",
-    ]
-
-    NUMERIC_PASSWORD = [
-        "0",
-        randint(1, 999999),
-        randint(12345678, 123456789),
-    ]
-
-    TOO_COMMON_PASSWORD = [
-        "Iloveyou",
-    ]
-
     AGE_CONTROL = [
         "0",
         "1",
@@ -40,12 +22,6 @@ class DataCasesPasswords:
         "-1",
         "18.5",
         "ывыы",
-    ]
-
-    INVALID_EMAILS_LIST_FOR_REG = [
-        ["nekorrektnii@email"],
-        ["nekorrektnii@ru"],
-        ["nekorre.ktnii@mail"],
     ]
 
     INVALID_EMPTY_DATA_FOR_LOG_PAGE = [
@@ -64,4 +40,29 @@ class DataCasesPasswords:
         ["password_2", ""],
         ["email", "nekorrektnii.email"],
         ["email", "@nekorrektniiemail.com"],
+    ]
+
+    INVALID_MESSAGES_CHECKER_ONE = [
+        ["A user with that username already exists.", "username", "111@111.ru"],
+        ["The two password fields didn’t match.", "password_2", "1"],
+        ["Enter a valid email address.", "email", "nekorrektnii@email"],
+        ["Enter a valid email address.", "email", "nekorrektnii@ru"],
+        ["Enter a valid email address.", "email", "nekorre.ktnii@mail"],
+    ]
+
+    INVALID_MESSAGES_CHECKER_TWO_PAR = [
+        ["This password is too short. It must contain at least 8 characters.",
+         "password_1", "1", "password_2", "1"],
+        ["This password is too short. It must contain at least 8 characters.",
+         "password_1", "1@a1Q$s", "password_2", "1@a1Q$s"],
+        ["This password is too short. It must contain at least 8 characters.",
+         "password_1", "1@a1Q$s", "password_2", "1@a1Q$s"],
+        ["This password is entirely numeric.",
+         "password_1", "0", "password_2", "0"],
+        ["This password is entirely numeric.",
+         "password_1", "1", "password_2", "1"],
+        ["This password is entirely numeric.",
+         "password_1", "12345678", "password_2", "12345678"],
+        ["This password is too common.",
+         "password_1", "Iloveyou", "password_2", "Iloveyou"],
     ]
