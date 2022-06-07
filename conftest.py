@@ -48,13 +48,16 @@ def pytest_runtest_makereport(item):
         try:
             with open("failures", mode):
                 if "app" in item.fixturenames:
-                    web_driver = item.funcargs["app"]
+                    web_driver = item.funcargs["app"].driver
                 else:
+                    logger.error("Fail to take screen-shot")
                     return
+            web_driver.get_screenshot_as_png()
             allure.attach(
                 web_driver.driver.get_screenshot_as_png(),
                 name="screenshot",
                 attachment_type=allure.attachment_type.PNG,
             )
+            logger.info("Screen-shot done")
         except Exception as e:
-            print("Fail to take screen-shot: {}".format(e))
+            logger.error("Fail to take screen-shot: {}".format(e))

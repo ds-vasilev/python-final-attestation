@@ -8,6 +8,8 @@ class TestLoginPage:
     def test_valid_login(self, app):
         """
         Test for valid logging.
+
+        :notes: Test 19.
         """
         app.login_page.open_login_page()
         username = "test"
@@ -19,6 +21,8 @@ class TestLoginPage:
     def test_invalid_login_empty(self, app, username_data, pass_data):
         """
         Test for invalid logging with empty data.
+
+        :notes: Test 20, 21.
         """
         app.login_page.open_login_page()
         username = username_data
@@ -30,6 +34,8 @@ class TestLoginPage:
     def test_invalid_login_invalid(self, app, username_data, pass_data):
         """
         Test for invalid logging with invalid data.
+
+        :notes: Test 22, 23.
         """
         app.login_page.open_login_page()
         username = username_data

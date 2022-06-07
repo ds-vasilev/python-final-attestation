@@ -1,5 +1,4 @@
-[![Python application](https://github.com/ds-vasilev/python-final-attestation/actions/workflows/python-app.yml/badge.svg)](https://github.com/ds-vasilev/python-final-attestation/actions/workflows/python-app.yml)
-http://188.120.227.87:8111/app/rest/builds/buildType:id:PythonFinalAttestation_Vasilev/statusIcon.svg
+[![Python application](https://github.com/ds-vasilev/python-final-attestation/actions/workflows/python-app-refactoring.yml/badge.svg)](https://github.com/ds-vasilev/python-final-attestation/actions/workflows/python-app-refactoring.yml)
 
 This is Python QA Engineer courses attestations work.
 The project used Python + Pytest autotests. 
@@ -24,7 +23,7 @@ pip install -r requirements.txt
 
 Tests start:
 ```
-pytest
+Pytest
 ```
 
 Code-check implemented through:
@@ -34,13 +33,19 @@ https://pre-commit.com/
 
 Test cases in:
 ```
-test-cases.xlsx
+./Test-cases.xlsx
 ```
 
 
 Logging implemented through:
 ```
-logging
+Logging
+```
+
+Repports in:
+```
+Allure
+$ allure serve ./python-final-attestation/report
 ```
 
 
